@@ -1,5 +1,5 @@
 [project]
-name = "mysql-mcp-server"
+name = "mdev-mysql-mcp-server"
 version = "0.1.0"
 description = "Model Context Protocol server for MySQL database inspection and querying"
 readme = "README.md"
@@ -23,7 +23,7 @@ classifiers = [
 ]
 
 [project.scripts]
-"mysql-mcp-server" = "mysql_mcp_server.server:main"
+"mdev-mysql-mcp-server" = "mysql_mcp_server.server:main"
 
 [project.optional-dependencies]
 dev = [

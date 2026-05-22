@@ -1,0 +1,5 @@
+mcp
+mysql-connector-python
+pydantic>=2.0.0
+python-dotenv
+typing-extensions>=4.8.0

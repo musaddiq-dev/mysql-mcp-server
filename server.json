@@ -1,0 +1,73 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.musaddiq-dev/mysql-mcp-server",
+  "description": "Python MCP server for MySQL database inspection and querying",
+  "title": "MySQL MCP Server",
+  "repository": {
+    "url": "https://github.com/musaddiq-dev/mysql-mcp-server",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "mysql-mcp-server",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "MYSQL_HOST",
+          "description": "MySQL host",
+          "isRequired": false,
+          "default": "localhost"
+        },
+        {
+          "name": "MYSQL_PORT",
+          "description": "MySQL port",
+          "isRequired": false,
+          "default": "3306"
+        },
+        {
+          "name": "MYSQL_USER",
+          "description": "MySQL username",
+          "isRequired": false,
+          "default": "root"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "description": "MySQL password",
+          "isRequired": false,
+          "isSecret": true,
+          "default": ""
+        },
+        {
+          "name": "MYSQL_DATABASE",
+          "description": "MySQL database name",
+          "isRequired": true
+        },
+        {
+          "name": "MYSQL_POOL_SIZE",
+          "description": "MySQL connection pool size",
+          "isRequired": false,
+          "default": "5"
+        },
+        {
+          "name": "LOG_LEVEL",
+          "description": "Python logging level",
+          "isRequired": false,
+          "default": "INFO"
+        },
+        {
+          "name": "MYSQL_READ_QUERY_LIMIT",
+          "description": "Maximum rows returned by read queries",
+          "isRequired": false,
+          "default": "1000"
+        }
+      ]
+    }
+  ]
+}

@@ -81,7 +81,31 @@ python -m mysql_mcp_server.server
 
 ## MCP Client Configuration
 
-Use an absolute path to the installed console script. MCP servers using stdio must write protocol messages only to stdout; this server writes logs to stderr through Python logging.
+For published installs, prefer `uvx`. MCP servers using stdio must write protocol messages only to stdout; this server writes logs to stderr through Python logging.
+
+### Claude Desktop / Cursor / Windsurf / Cline
+
+Most MCP clients accept this `mcpServers` JSON shape:
+
+```json
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "uvx",
+      "args": ["mdev-mysql-mcp-server"],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "mcp_readonly",
+        "MYSQL_PASSWORD": "change-me",
+        "MYSQL_DATABASE": "your_database"
+      }
+    }
+  }
+}
+```
+
+For local development from this repository, use the installed console script path instead:
 
 ```json
 {
@@ -89,6 +113,41 @@ Use an absolute path to the installed console script. MCP servers using stdio mu
     "mysql": {
       "command": "/absolute/path/to/mysql-mcp-server/.venv/bin/mdev-mysql-mcp-server",
       "args": [],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "mcp_readonly",
+        "MYSQL_PASSWORD": "change-me",
+        "MYSQL_DATABASE": "your_database"
+      }
+    }
+  }
+}
+```
+
+### Claude Code CLI
+
+```bash
+claude mcp add mysql \
+  --env MYSQL_HOST=localhost \
+  --env MYSQL_PORT=3306 \
+  --env MYSQL_USER=mcp_readonly \
+  --env MYSQL_PASSWORD=change-me \
+  --env MYSQL_DATABASE=your_database \
+  -- uvx mdev-mysql-mcp-server
+```
+
+### VS Code MCP
+
+VS Code uses the same command/args/env model in its MCP configuration:
+
+```json
+{
+  "servers": {
+    "mysql": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mdev-mysql-mcp-server"],
       "env": {
         "MYSQL_HOST": "localhost",
         "MYSQL_PORT": "3306",
